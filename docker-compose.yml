@@ -1,0 +1,9 @@
+version: '3'
+services:
+  corona-check-bw:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: corona-check-bw:latest
+    ports:
+      - 8080:8080/tcp
