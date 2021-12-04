@@ -1,13 +1,13 @@
-package de.coronacheck.coronacheckbw;
+package de.bw.coronacheck;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CoronaCheckBwApplication {
+public class CoronaCheckApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CoronaCheckBwApplication.class, args);
+		SpringApplication.run(CoronaCheckApplication.class, args);
 	}
 
 }
