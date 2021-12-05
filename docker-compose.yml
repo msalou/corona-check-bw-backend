@@ -8,3 +8,5 @@ services:
     image: corona-check-bw:latest
     ports:
       - "8080:8080"
+    environment:
+      - CORS_ACCESS_CONTROL_ALLOW_ORIGIN: http://localhost, http://localhost:4200
