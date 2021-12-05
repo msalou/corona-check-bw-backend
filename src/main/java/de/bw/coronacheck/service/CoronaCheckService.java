@@ -16,6 +16,11 @@ import de.bw.coronacheck.repository.LebensbereichRepository;
 @Service
 public class CoronaCheckService {
 
+    private static final int STUFE_1 = 1;
+    private static final int STUFE_2 = 2;
+    private static final int STUFE_3 = 3;
+    private static final int STUFE_4 = 4;
+
     @Autowired
     private AlarmstufeRepository alarmstufeRepository;
 
@@ -33,6 +38,27 @@ public class CoronaCheckService {
 
     public List<Lebensbereich> getLebensbereiche() {
         return lebensbereichRepository.findAll();
+    }
+
+    public String getMassnahmeByLebensbereich(final Long lebensbereichId) throws RuntimeException {
+        final Alarmstufe currentAlarmstufe = getCurrentAlarmstufe();
+        final Lebensbereich lebensbereich = getLebensbereichById(lebensbereichId);
+        switch (currentAlarmstufe.getId().intValue()) {
+            case STUFE_1:
+                return lebensbereich.getStepBasisstufe();
+            case STUFE_2:
+                return lebensbereich.getStepWarnstufe();
+            case STUFE_3:
+                return lebensbereich.getStepAlarmstufeI();
+            case STUFE_4:
+                return lebensbereich.getStepAlarmstufeII();
+            default:
+                throw new RuntimeException();
+        }
+    }
+
+    private Lebensbereich getLebensbereichById(Long lebensbereichId) {
+        return getLebensbereiche().stream().filter(lebensbereich -> lebensbereich.getId() == lebensbereichId).findFirst().orElseThrow(RuntimeException::new);
     }
 
 }

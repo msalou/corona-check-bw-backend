@@ -10,10 +10,10 @@ public class Lebensbereich {
     @GeneratedValue
     private Long id;
     private String description;
-    private String stepBasisstufe;
-    private String stepWarnstufe;
-    private String stepAlarmstufeI;
-    private String stepAlarmstufeII;
+    private String step1Basisstufe;
+    private String step2Warnstufe;
+    private String step3AlarmstufeI;
+    private String step4AlarmstufeII;
 
     public void setId(final Long id) {
         this.id = id;
@@ -32,18 +32,18 @@ public class Lebensbereich {
     }
 
     public String getStepBasisstufe() {
-        return this.stepBasisstufe;
+        return this.step1Basisstufe;
     }
 
     public String getStepWarnstufe() {
-        return this.stepWarnstufe;
+        return this.step2Warnstufe;
     }
 
     public String getStepAlarmstufeI() {
-        return this.stepAlarmstufeI;
+        return this.step3AlarmstufeI;
     }
 
     public String getStepAlarmstufeII() {
-        return this.stepAlarmstufeII;
+        return this.step4AlarmstufeII;
     }
 }
