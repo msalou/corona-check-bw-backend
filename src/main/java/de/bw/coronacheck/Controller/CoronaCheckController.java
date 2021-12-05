@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.bw.coronacheck.models.Alarmstufe;
 import de.bw.coronacheck.models.Lebensbereich;
+import de.bw.coronacheck.models.Massnahme;
 import de.bw.coronacheck.service.CoronaCheckService;
 
 @RestController
@@ -50,11 +51,11 @@ public class CoronaCheckController {
   }
 
   @GetMapping("/getMassnahmeByLebensbereich/{lebensbereichId}")
-  public ResponseEntity<String> getMassnahmeByLebensbereich(@PathVariable("lebensbereichId") String lebensbereichId) {
+  public ResponseEntity<Massnahme> getMassnahmeByLebensbereich(@PathVariable("lebensbereichId") String lebensbereichId) {
     try {
       logger.info("Load Massnahme");
       long lebensbereichIdLong = Long.parseLong(lebensbereichId);
-      final String massnahme = coronaCheckService.getMassnahmeByLebensbereich(lebensbereichIdLong);
+      final Massnahme massnahme = coronaCheckService.getMassnahmeByLebensbereich(lebensbereichIdLong);
       logger.info("Loading Massnahme successful");
       return ResponseEntity.ok().body(massnahme);
     } catch (NumberFormatException numberFormatException) {

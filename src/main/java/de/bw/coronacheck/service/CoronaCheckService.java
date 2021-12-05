@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import de.bw.coronacheck.models.Alarmstufe;
 import de.bw.coronacheck.models.AlarmstufeHistory;
 import de.bw.coronacheck.models.Lebensbereich;
+import de.bw.coronacheck.models.Massnahme;
 import de.bw.coronacheck.repository.AlarmstufeHistoryRepository;
 import de.bw.coronacheck.repository.AlarmstufeRepository;
 import de.bw.coronacheck.repository.LebensbereichRepository;
@@ -40,18 +41,18 @@ public class CoronaCheckService {
         return lebensbereichRepository.findAll();
     }
 
-    public String getMassnahmeByLebensbereich(final Long lebensbereichId) throws RuntimeException {
+    public Massnahme getMassnahmeByLebensbereich(final Long lebensbereichId) throws RuntimeException {
         final Alarmstufe currentAlarmstufe = getCurrentAlarmstufe();
         final Lebensbereich lebensbereich = getLebensbereichById(lebensbereichId);
         switch (currentAlarmstufe.getId().intValue()) {
             case STUFE_1:
-                return lebensbereich.getStepBasisstufe();
+                return new Massnahme(lebensbereich.getStepBasisstufe());
             case STUFE_2:
-                return lebensbereich.getStepWarnstufe();
+                return new Massnahme(lebensbereich.getStepWarnstufe());
             case STUFE_3:
-                return lebensbereich.getStepAlarmstufeI();
+                return new Massnahme(lebensbereich.getStepAlarmstufeI());
             case STUFE_4:
-                return lebensbereich.getStepAlarmstufeII();
+                return new Massnahme(lebensbereich.getStepAlarmstufeII());
             default:
                 throw new RuntimeException();
         }
