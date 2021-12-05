@@ -4,9 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import lombok.Builder;
-
-@Builder
 @Entity
 public class Lebensbereich {
     @Id
