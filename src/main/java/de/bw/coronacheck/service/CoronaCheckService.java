@@ -13,7 +13,7 @@ public class CoronaCheckService {
     private CoronaCheckRepository coronaCheckRepository;
 
     public Alarmstufe getCurrentAlarmstufe() {
-        return coronaCheckRepository.findById("Alarmstufe I").get();
+        return coronaCheckRepository.findAll().get(0);
     }
 
 }
