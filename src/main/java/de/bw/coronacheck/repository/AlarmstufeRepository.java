@@ -1,0 +1,10 @@
+package de.bw.coronacheck.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import de.bw.coronacheck.models.Alarmstufe;
+
+@Repository
+public interface AlarmstufeRepository extends JpaRepository<Alarmstufe, Long> {
+}
