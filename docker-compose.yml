@@ -9,4 +9,4 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - CORS_ACCESS_CONTROL_ALLOW_ORIGIN: http://localhost, http://localhost:4200
+      - CORS_ACCESS_CONTROL_ALLOW_ORIGIN=http://localhost,http://localhost:8081,http://localhost:4200
