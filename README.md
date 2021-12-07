@@ -1,4 +1,4 @@
-# corona-check-bw-backend
+# Corona Checker BW Backend
 
 Spring Boot Application to check current Corona rules in Baden-Württemberg.
 
